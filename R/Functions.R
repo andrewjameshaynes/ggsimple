@@ -1,4 +1,3 @@
-require(dplyr)
 require(ggplot2)
 
 ##: initialise plot object with data
@@ -26,6 +25,11 @@ Bar<-function(x, y, colour = NULL, group=NULL){
 ##: Bar plot for groups side-by-side
 Side_By_Side_Bar<-function(x, y, colour = NULL, group=NULL){
   .PLOT <<- .PLOT + geom_col(aes_string(x, y, fill=group), position = "dodge")
+}
+
+##: Line plot for x/y and groups
+Line<-function(x, y, group=NULL){
+  .PLOT <<- .PLOT + geom_line(aes_string(x, y, col=group))
 }
 
 ##: Output a plot
