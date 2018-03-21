@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "## No Group\nPlot(iris)\nShow_Variables()\nScatter(\"Sepal.Length\", \"Petal.Length\")\nGroup_Colours()\nLabels(title = \"My Test Plot\")\nShow_Plot()\n\n## group test\nPlot(iris)\nShow_Variables()\nScatter(\"Sepal.Length\", \"Petal.Length\", group = \"Species\")\nGroup_Colours(c(\"Orange\", \"Green\", \"Purple\"))\nLabels(title = \"My Test Plot\")\nShow_Plot()\n",
+    "created" : 1521637022772.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2587082500",
+    "id" : "CDBEDC5",
+    "lastKnownWriteTime" : 1521646053,
+    "last_content_update" : 1521646053933,
+    "path" : "~/Desktop/ggSimple/R/Test Workflow.R",
+    "project_path" : "R/Test Workflow.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

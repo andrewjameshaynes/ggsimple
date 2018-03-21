@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "##: Cute wrapper for verbose collapse argument in paste0\ncollapse<-function(x, sep =''){\n  paste0(x,collapse=sep)\n}\n\n##: goodLabelNames() - Capitalises first letter in each word unless word is 3 or less letters in size, then leaves as is\ngoodLabelNames=function(string){\n  string = gsub(\"\\\\.\",\"_\",string)\n  words<-el(strsplit(string, split = \"_\"))\n  for(i in 1:length(words)){\n    index<-which(nchar(words)>3)\n    if(i %in% index){\n      words[i]<-paste0(toupper(substring(words[i],1,1)),substring(words[i],2))\n    }\n  }\n  collapse(words, sep=' ')\n}\n",
+    "created" : 1521635692755.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2664948889",
+    "id" : "48F44B2F",
+    "lastKnownWriteTime" : 1521636267,
+    "last_content_update" : 1521636267882,
+    "path" : "~/Desktop/ggSimple/R/Plot Helper Functions.R",
+    "project_path" : "R/Plot Helper Functions.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

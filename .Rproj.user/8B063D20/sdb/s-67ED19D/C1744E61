@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "require(dplyr)\nrequire(ggplot2)\n\n##: initialise plot object with data\nPlot<-function(data){\n  .PLOT<<-ggplot(data)\n}\n\n##: Show Variables available to the user\nShow_Variables<-function(){\n  cat(\"Available Columns are: \\n\",\n      paste(colnames(iris), sapply(.PLOT$data, class), sep = \":   \"),\n      sep = \"\\n\")\n}\n\n##: Scatter plot for x, y and a group to colour by\nScatter<-function(x, y, colour = NULL, group=NULL){\n  .PLOT <<- .PLOT + geom_point(aes_string(x, y, col=group))\n}\n\n##: Bar plot for x, y, and a group to fill by\nBar<-function(x, y, colour = NULL, group=NULL){\n  .PLOT <<- .PLOT + geom_col(aes_string(x, y, fill=group))\n}\n\n##: Bar plot for groups side-by-side\nSide_By_Side_Bar<-function(x, y, colour = NULL, group=NULL){\n  .PLOT <<- .PLOT + geom_col(aes_string(x, y, fill=group), position = \"dodge\")\n}\n\n##: Output a plot\nShow_Plot<-function(){\n  print(.PLOT)\n}\n\n##: labels - will be default convert your x/y columns into a nice format\n\nLabels<-function(x_label = waiver(), y_label = waiver(), title=waiver()){\n  .PLOT$labels <- lapply(.PLOT$labels, goodLabelNames)\n  .PLOT <<- .PLOT + xlab(x_label) + ylab(y_label) + ggtitle(title)\n}\n\nGroup_Count<-function(){\n  if((!is.null(.PLOT$labels$colour)) & isTRUE(.PLOT$labels$colour!=\"NULL\" )){\n    return(length(unique(.PLOT$data[,.PLOT$labels$colour])))\n  } else if ((!is.null(.PLOT$labels$fill)) & isTRUE(.PLOT$labels$fill!=\"NULL\")){\n    return(length(unique(.PLOT$data[,.PLOT$labels$fill])))\n  } else {\n    return(0)\n  }\n}\n\n##: set group colours, input should be vector same size as the number of groups\n##:                    if no input is entered BUt there is a group, scan will ask for user input\nGroup_Colours<-function(input=NULL){\n  how_many_groups = Group_Count()\n  if(how_many_groups == 0){\n    stop(\"You don't have a group in your plot call!\")\n  }\n\n  if((!is.null(input)) & length(input) != how_many_groups){\n    stop(\"Input vector is different size to size of group!\")\n  }\n\n  if(is.null(input) & how_many_groups > 0){\n  input =  scan(\"\",paste0(\"Your plot call has \",how_many_groups, \" groups, input a colour for each one:\"), quiet = T, nmax = how_many_groups)\n  }\n\n  .PLOT <<- .PLOT + scale_color_manual(values = input) +\n    scale_fill_manual(values = input)\n\n}\n",
+    "created" : 1521624134317.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3281054063",
+    "id" : "C1744E61",
+    "lastKnownWriteTime" : 1521646050,
+    "last_content_update" : 1521646050489,
+    "path" : "~/Desktop/ggSimple/R/Functions.R",
+    "project_path" : "R/Functions.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
