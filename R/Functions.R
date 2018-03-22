@@ -63,7 +63,7 @@ Group_Count<-function(){
 Group_Colours<-function(input=NULL){
   how_many_groups = Group_Count()
   if(how_many_groups == 0){
-    stop("You don't have a group in your plot call!")
+    stop("You don't have a group= in your plot call! Use Colour() instead.")
   }
 
   if((!is.null(input)) & length(input) != how_many_groups){
@@ -76,6 +76,21 @@ Group_Colours<-function(input=NULL){
 
   .PLOT <<- .PLOT + scale_color_manual(values = input) +
     scale_fill_manual(values = input)
+}
+
+# Fill<-function(fill){
+#   for(i in 1:length(.PLOT$layers)){
+#   .PLOT$layers[[i]]$aes_params$fill=fill
+#   .PLOT$layers[[i]]$show.legend=F
+#   }
+# }
+
+Colour<-function(colour){
+  for(i in 1:length(.PLOT$layers)){
+  .PLOT$layers[[i]]$aes_params$colour=colour
+  .PLOT$layers[[i]]$aes_params$fill=colour
+  .PLOT$layers[[i]]$show.legend=F
+  }
 }
 
 Scales<-function(x="waiver",y="waiver", reorder_x_axis=NULL, reorder_y_axis=NULL){
