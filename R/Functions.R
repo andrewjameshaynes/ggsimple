@@ -74,8 +74,40 @@ Group_Colours<-function(input=NULL){
     scale_fill_manual(values = input)
 }
 
-Scales<-function(x,y){
+Scales<-function(x="waiver",y="waiver"){
 
+  if(is_y_scale_continuos()){
+   .PLOT <<- .PLOT + scale_y_continuous(labels=continuous_scale_options(y))
+  } else {
+    .PLOT <<- .PLOT + scale_y_discrete(labels=discrete_scale_options(y))
+  }
+
+  if(is_x_scale_continuos()){
+    .PLOT <<- .PLOT + scale_x_continuous(labels=continuous_scale_options(x))
+  } else {
+    .PLOT <<- .PLOT + scale_x_discrete(labels=discrete_scale_options(x))
+  }
+
+}
+
+Show_Scales<-function(){
+  cat(
+    "Continuous choices:",
+    "Comma          - add commas to numbers >1000" ,
+    "Dollar         - adds $ sign to values",
+    "Pound          - adds £ sign to values",
+    "Percent        - Multiply value by 100 and append with %",
+    "Percent as is  - appends % to values",
+    "Scientific     - prints value in sceitfic notation",
+    "\n",
+    "Discrete choices:",
+    "Ordinal        - changes values to its ordinal equivalent",
+    "Upper case     - changes all elements to upper case",
+    "Lower case     - changes all elements to lower case",
+    "Proper case    - upper cases only the first letter of every word",
+    "Beautify       - Applies proper case to first word, then lower case to all others",
+    sep="\n"
+  )
 }
 
 

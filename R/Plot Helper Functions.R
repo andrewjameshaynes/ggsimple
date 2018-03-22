@@ -10,7 +10,7 @@ goodLabelNames=function(string){
   for(i in 1:length(words)){
     index<-which(nchar(words)>3)
     if(i %in% index){
-      words[i]<-paste0(toupper(substring(words[i],1,1)),substring(words[i],2))
+      words[i]<-paste0(toupper(substring(tolower(words[i]),1,1)),substring(tolower(words[i]),2))
     }
   }
   collapse(words, sep=' ')
@@ -21,8 +21,8 @@ is_x_scale_continuos<-function(){
   ifelse(x_class %in% c("numeric", "integer", "double"), T, F)
 }
 is_y_scale_continuos<-function(){
-  x_class = class(.PLOT$data[,as.character(el(.PLOT$layers)$mapping$y)])
-  ifelse(x_class %in% c("numeric", "integer", "double"), T, F)
+  y_class = class(.PLOT$data[,as.character(el(.PLOT$layers)$mapping$y)])
+  ifelse(y_class %in% c("numeric", "integer", "double"), T, F)
 }
 
 continuous_scale_options<-function(scale_request){
@@ -33,6 +33,7 @@ continuous_scale_options<-function(scale_request){
            "percent" = percent,
            "percentasis" = {function(x){paste0(comma(x),"%")}},
            "scientific" = scientific,
+           "waiver" = waiver(),
            stop("oops! That's not an available scale. Call Show_Scales() for options."))
 }
 
@@ -42,5 +43,7 @@ discrete_scale_options<-function(scale_request){
          "uppercase" = toupper,
          "lowercase" = tolower,
          "propercase" = upcaseFirstLetter,
+         "beautify" = {function(x)sapply(x,goodLabelNames)},
+         "waiver" = waiver(),
          stop("oops! That's not an available scale. Call Show_Scales() for options."))
 }
