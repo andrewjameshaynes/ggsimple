@@ -34,6 +34,7 @@ Line<-function(x, y, group=NULL){
 
 ##: Output a plot
 Show_Plot<-function(){
+  .PLOT <<- .PLOT + theme_minimal()
   print(.PLOT)
 }
 
