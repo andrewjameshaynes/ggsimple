@@ -15,3 +15,9 @@ goodLabelNames=function(string){
   }
   collapse(words, sep=' ')
 }
+
+is_x_scale_continuos<-function(){
+  x_class = class(.PLOT$data[,as.character(el(.PLOT$layers)$mapping$x)])
+  ifelse(x_class %in% c("numeric", "integer", "double"), T, F)
+}
+

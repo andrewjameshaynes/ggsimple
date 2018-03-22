@@ -72,5 +72,4 @@ Group_Colours<-function(input=NULL){
 
   .PLOT <<- .PLOT + scale_color_manual(values = input) +
     scale_fill_manual(values = input)
-
 }
