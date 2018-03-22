@@ -86,6 +86,10 @@ Group_Colours<-function(input=NULL){
 # }
 
 Colour<-function(colour){
+  if(Group_Count() != 0){
+    stop("You have a group= in your plot call! Use Group_Colours() instead.")
+  }
+
   for(i in 1:length(.PLOT$layers)){
   .PLOT$layers[[i]]$aes_params$colour=colour
   .PLOT$layers[[i]]$aes_params$fill=colour
