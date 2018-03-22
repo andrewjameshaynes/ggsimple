@@ -37,6 +37,10 @@ Show_Plot<-function(){
   print(.PLOT)
 }
 
+Clear_Plot<-function(){
+  remove(.PLOT)
+}
+
 ##: labels - will be default convert your x/y columns into a nice format
 
 Labels<-function(x_label = waiver(), y_label = waiver(), title=waiver()){
@@ -74,18 +78,18 @@ Group_Colours<-function(input=NULL){
     scale_fill_manual(values = input)
 }
 
-Scales<-function(x="waiver",y="waiver"){
+Scales<-function(x="waiver",y="waiver", reorder_x_axis=NULL, reorder_y_axis=NULL){
 
   if(is_y_scale_continuos()){
    .PLOT <<- .PLOT + scale_y_continuous(labels=continuous_scale_options(y))
   } else {
-    .PLOT <<- .PLOT + scale_y_discrete(labels=discrete_scale_options(y))
+    .PLOT <<- .PLOT + scale_y_discrete(labels=discrete_scale_options(y), limits = reorder_y_axis)
   }
 
   if(is_x_scale_continuos()){
     .PLOT <<- .PLOT + scale_x_continuous(labels=continuous_scale_options(x))
   } else {
-    .PLOT <<- .PLOT + scale_x_discrete(labels=discrete_scale_options(x))
+    .PLOT <<- .PLOT + scale_x_discrete(labels=discrete_scale_options(x), limits = reorder_x_axis)
   }
 
 }
