@@ -1,0 +1,46 @@
+---
+title: "Introducting ggSimple"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(ggSimple)
+require(scales)
+```
+
+##This is ggSimple! A simple syntax to provide limited ggplot2 functionality.
+
+Initialise a plot instance with ```Plot()```:
+```{r} 
+Plot(iris)
+```
+
+Add a line to the chart, specifying a group option:
+```{r}
+Line(x="Sepal.Length", y="Petal.Length", group = "Species")
+```
+
+Adjust the line colours for the group:
+```{r}
+Group_Colours(c("Orange", "Green", "Purple"))
+```
+
+Change the x scale to display scientific, and y scale to display pounds.
+```{r}
+Scales(x = "scientific", y = "pound")
+```
+
+Add a title and labels (```Labels()``` by default will try to beautify your x/y labels):
+```{r}
+Labels(title = "My Test Plot")
+```
+
+Finally print the plot with ```Show_Plot()```
+```{r}
+Show_Plot()
+```
+
+
