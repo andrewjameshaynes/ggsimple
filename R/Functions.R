@@ -1,10 +1,5 @@
 require(ggplot2)
 
-##: initialise plot object with data
-Plot<-function(data){
-  .PLOT<<-ggplot(data)
-}
-
 ##: Show Variables available to the user
 Show_Variables<-function(){
   cat("Available Columns are: \n",
@@ -30,16 +25,6 @@ Side_By_Side_Bar<-function(x, y, colour = NULL, group=NULL){
 ##: Line plot for x/y and groups
 Line<-function(x, y, group=NULL){
   .PLOT <<- .PLOT + geom_line(aes_string(x, y, col=group))
-}
-
-##: Output a plot
-Show_Plot<-function(){
-  .PLOT <<- .PLOT + theme_minimal()
-  print(.PLOT)
-}
-
-Clear_Plot<-function(){
-  remove(.PLOT)
 }
 
 ##: labels - will be default convert your x/y columns into a nice format
