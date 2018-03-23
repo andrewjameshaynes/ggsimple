@@ -1,6 +1,6 @@
-##: Cute wrapper for verbose collapse argument in paste0
-collapse<-function(x, sep =''){
-  paste0(x,collapse=sep)
+upcaseFirstLetter = function(word, stopWords = c()){
+  word = tolower(word)
+  ifelse(!word %in% stopWords, paste0(toupper(substring(word,1,1)),substring(word,2)), word)
 }
 
 ##: goodLabelNames() - Capitalises first letter in each word unless word is 3 or less letters in size, then leaves as is
@@ -13,6 +13,10 @@ goodLabelNames=function(string){
       words[i]<-paste0(toupper(substring(tolower(words[i]),1,1)),substring(tolower(words[i]),2))
     }
   }
+  collapse<-function(x, sep =''){
+    paste0(x,collapse=sep)
+  }
+
   collapse(words, sep=' ')
 }
 
