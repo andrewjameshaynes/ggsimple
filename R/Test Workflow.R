@@ -3,7 +3,7 @@ no_group_test_plot<-function(){
 Plot(iris)
 Show_Variables()
 Scatter("Sepal.Length", "Petal.Length")
-Group_Colours()
+Colour("Blue")
 Labels(title = "My Test Plot")
 Show_Plot()
 }
