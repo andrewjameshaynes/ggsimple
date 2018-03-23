@@ -16,11 +16,11 @@ goodLabelNames=function(string){
   collapse(words, sep=' ')
 }
 
-is_x_scale_continuos<-function(){
+is_x_scale_continuous<-function(){
   x_class = class(.PLOT$data[,as.character(el(.PLOT$layers)$mapping$x)])
   ifelse(x_class %in% c("numeric", "integer", "double"), T, F)
 }
-is_y_scale_continuos<-function(){
+is_y_scale_continuous<-function(){
   y_class = class(.PLOT$data[,as.character(el(.PLOT$layers)$mapping$y)])
   ifelse(y_class %in% c("numeric", "integer", "double"), T, F)
 }
