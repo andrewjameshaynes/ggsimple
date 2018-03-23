@@ -11,5 +11,5 @@ Show_Plot<-function(){
 
 ##: Clear the plot object by removing .PLOT
 Clear_Plot<-function(){
-  remove(.PLOT)
+  remove(.PLOT, envir = .GlobalEnv)
 }
