@@ -51,3 +51,7 @@ discrete_scale_options<-function(scale_request){
          "waiver" = waiver(),
          stop("oops! That's not an available scale. Call Show_Scales() for options."))
 }
+
+is_histogram<-function(){
+  ifelse(!(is.null(.PLOT$layers[[1]]$stat_params$bins)),T,F)
+}
