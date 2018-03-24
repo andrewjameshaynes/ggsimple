@@ -27,6 +27,10 @@ Line<-function(x, y, group=NULL){
   .PLOT <<- .PLOT + geom_line(aes_string(x, y, col=group))
 }
 
+Histogram<-function(x, group = NULL, bins = 10){
+  .PLOT <<- .PLOT + geom_histogram(aes_string(x, fill = group), bins = bins)
+}
+
 ##: labels - will be default convert your x/y columns into a nice format
 
 Labels<-function(x_label = waiver(), y_label = waiver(), title=waiver()){
@@ -84,11 +88,12 @@ Colour<-function(colour){
 }
 
 Scales<-function(x="waiver",y="waiver", reorder_x_axis=NULL, reorder_y_axis=NULL){
-
-  if(is_y_scale_continuous()){
-   .PLOT <<- .PLOT + scale_y_continuous(labels=continuous_scale_options(y))
-  } else {
-    .PLOT <<- .PLOT + scale_y_discrete(labels=discrete_scale_options(y), limits = reorder_y_axis)
+  if(is_histogram()==F){
+    if(is_y_scale_continuous()){
+     .PLOT <<- .PLOT + scale_y_continuous(labels=continuous_scale_options(y))
+    } else {
+      .PLOT <<- .PLOT + scale_y_discrete(labels=discrete_scale_options(y), limits = reorder_y_axis)
+    }
   }
 
   if(is_x_scale_continuous()){
