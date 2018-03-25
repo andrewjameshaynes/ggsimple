@@ -1,11 +1,10 @@
 ##: initialise plot object with provided dataset
 Plot<-function(data){
-  .PLOT<<-ggplot(data)
+  .PLOT<<-ggplot(data) + theme_minimal()
 }
 
 ##: Output the plot to window with minimal theme
 Show_Plot<-function(){
-  .PLOT <<- .PLOT + theme_minimal()
   print(.PLOT)
 }
 
