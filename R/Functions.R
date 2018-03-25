@@ -131,4 +131,42 @@ Show_Scales<-function(){
   )
 }
 
+Theme<-function(theme){
+  switch(gsub("[-_. ]+","",tolower(scale_request)),
+         "baser" = theme_base(),
+         "bare" = theme_few(),
+         "googledocs" = theme_gdocs(),
+         "themegrey" = theme_grey(),
+         "themegray" = theme_gray(),
+         "highchart" = theme_hc(),
+         "empty" = theme_maps(),
+         "barenolines" = theme_pander(),
+         "tufte" = theme_tufte(),
+         "wallstreet" = theme_wsj(),
+         "blackandwhite" = theme_bw()
+
+
+         stop("oops! That's not an available scale. Call Show_Themes() for options."))
+}
+
+
+Show_Themes<-function(){
+  label = c("Base R", "Bare", "Google Docs", "Grey", "Empty", "Tufte", "Wall Street", "Black and White")
+  themes<-c(theme_base,theme_few,theme_gdocs,theme_grey,theme_map,theme_tufte,theme_wsj,theme_bw)
+
+  p1 <- ggplot(iris) + geom_boxplot(aes(Species, Petal.Width, fill = Species)) + ggtitle(label[1]) + theme_base()
+  p2 <- ggplot(iris) + geom_boxplot(aes(Species, Petal.Width, fill = Species)) + ggtitle(label[2]) + theme_few()
+  p3 <- ggplot(iris) + geom_boxplot(aes(Species, Petal.Width, fill = Species)) + ggtitle(label[3]) + theme_gdocs()
+  p4 <- ggplot(iris) + geom_boxplot(aes(Species, Petal.Width, fill = Species)) + ggtitle(label[4]) + theme_grey()
+  p5 <- ggplot(iris) + geom_boxplot(aes(Species, Petal.Width, fill = Species)) + ggtitle(label[5]) + theme_map()
+  p6 <- ggplot(iris) + geom_boxplot(aes(Species, Petal.Width, fill = Species)) + ggtitle(label[6]) + theme_tufte()
+  p7 <- ggplot(iris) + geom_boxplot(aes(Species, Petal.Width, fill = Species)) + ggtitle(label[7]) + theme_wsj()
+  p8 <- ggplot(iris) + geom_boxplot(aes(Species, Petal.Width, fill = Species)) + ggtitle(label[8]) + theme_bw()
+  grid.arrange(p1, p2, p3, p4, p5, p6, p7, p8)
+
+  cat("Available themes are:",label,sep = "\n")
+  remove(p1, p2, p3, p4, p5, p6, p7, p8)
+}
+
+
 
