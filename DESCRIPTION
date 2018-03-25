@@ -9,6 +9,8 @@ Description: More about what it does (maybe more than one line)
 Depends:
     ggplot2
     scales
+    ggthemes
+    gridExtra
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
