@@ -132,21 +132,18 @@ Show_Scales<-function(){
 }
 
 Theme<-function(theme){
-  switch(gsub("[-_. ]+","",tolower(scale_request)),
+ THEME = switch(gsub("[-_. ]+","",tolower(theme)),
          "baser" = theme_base(),
          "bare" = theme_few(),
          "googledocs" = theme_gdocs(),
          "themegrey" = theme_grey(),
          "themegray" = theme_gray(),
-         "highchart" = theme_hc(),
-         "empty" = theme_maps(),
-         "barenolines" = theme_pander(),
+         "empty" = theme_map(),
          "tufte" = theme_tufte(),
          "wallstreet" = theme_wsj(),
-         "blackandwhite" = theme_bw()
-
-
-         stop("oops! That's not an available scale. Call Show_Themes() for options."))
+         "blackandwhite" = theme_bw(),
+         stop("oops! That's not an available theme. Call Show_Themes() for options."))
+  .PLOT <<- .PLOT + THEME
 }
 
 
