@@ -31,6 +31,13 @@ Histogram<-function(x, group = NULL, bins = 10){
   .PLOT <<- .PLOT + geom_histogram(aes_string(x, fill = group), bins = bins)
 }
 
+Boxplot<-function(x, y, group = NULL){
+  if(class(.PLOT$data[,x]) %in% c("numeric", "integer", "double")){
+    stop("This Boxplot function only allows discrete x values! Use Show_Variables() to see options.")
+  }
+  .PLOT <<- .PLOT + geom_boxplot(aes_string(x, y, fill = group))
+}
+
 ##: labels - will be default convert your x/y columns into a nice format
 
 Labels<-function(x_label = waiver(), y_label = waiver(), title=waiver()){
