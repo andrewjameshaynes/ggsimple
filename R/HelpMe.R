@@ -31,12 +31,42 @@ HelpMe<-function(){
         ,sep="\n")
   }
 
+  option3<-function(){
+    cat("There are multiple functions that help your ggSimple experience:",
+        "Show_Variables():             Outputs a list of Available Columns with their data type",
+        "Show_Scales():                Outputs a descriptive list of available Scale choices for
+                              Continuous and Discrete axis",
+        "Show_Themes():                Outputs a list of available themes, and a grid of Plots
+                              showcasing those themes.",
+        "is_(x/y)_scale_continuous():  Boolean Function that outputs true if x/y scale is continuous
+                              or not",
+        "Group_Count():                Outputs the number of groups available form the specified
+                              group option in the plot",
+        "\n",
+        "All helper functions must come after the Plot() call, and most will need to come after a
+plot object function such as Line()."
+        ,sep="\n")
+  }
+
+  option4<-function(){
+    cat("If there is a feature that is in keeping with the basic style of ggSimple that you think
+should be included, either make a pull request or email me at andrewjameshaynes@gmail.com.")
+  }
+
   if(option == 1){
     option1()
   }
 
   if(option == 2){
     option2()
+  }
+
+  if(option == 3){
+    option3()
+  }
+
+  if(option == 4){
+    option4()
   }
 
 }
