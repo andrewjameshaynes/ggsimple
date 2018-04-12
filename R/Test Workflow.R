@@ -20,3 +20,13 @@ Scales(x="scientific", y="pound")
 Labels(title = "My Test Plot")
 Show_Plot()
 }
+
+boxplot_test_plot<-function(){
+Plot(iris)
+Boxplot(x= "Species", y = "Sepal.Length")
+Colour(colour = "Blue")
+Labels(x_label = "My x-axis Label", y_label = "lower case y-axis label")
+Scales(x = "upper case", y = "dollar")
+Theme(theme = "Base R")
+Show_Plot()
+}

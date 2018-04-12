@@ -73,3 +73,12 @@ Theme<-function(theme){
                  stop("oops! That's not an available theme. Call Show_Themes() for options."))
   .PLOT <<- .PLOT + THEME
 }
+
+x_labels_rotate = function(angle = 90){
+  .PLOT <<- .PLOT + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+}
+
+Coord_Flip<-function(){
+  .PLOT <<- .PLOT + coord_flip()
+}
+

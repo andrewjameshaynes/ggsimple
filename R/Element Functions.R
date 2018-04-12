@@ -1,7 +1,7 @@
 
 ##: Scatter plot for x, y and a group to colour by
-Scatter<-function(x, y, colour = NULL, group=NULL){
-  .PLOT <<- .PLOT + geom_point(aes_string(x, y, col=group))
+Scatter<-function(x, y, group=NULL){
+  .PLOT <<- .PLOT + geom_point(aes_string(x, y, colour=group))
 }
 
 ##: Bar plot for x, y, and a group to fill by
